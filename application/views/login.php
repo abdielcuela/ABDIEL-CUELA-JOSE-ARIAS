@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar sesión - Juego</title>
-    <!-- Agregar Bootstrap CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #87CEEB; /* Color celeste */
+            background-color: #87CEEB; 
             font-family: 'Press Start 2P', cursive;
             color: #fff;
         }
@@ -59,7 +58,7 @@
             box-shadow: none;
         }
     </style>
-    <!-- Fuente temática de videojuegos -->
+    
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -71,7 +70,7 @@
                         <h4>Iniciar sesión</h4>
                     </div>
                     <div class="card-body">
-                        <!-- Mensaje de error si existe -->
+                        
                         <?php if (isset($error)): ?>
                             <div class="alert alert-danger text-center" role="alert">
                                 <?= $error ?>
@@ -93,7 +92,8 @@
                             <button type="submit" class="btn btn-primary w-100">Iniciar sesión</button>
                         </form>
 
-                        <!-- Enlace para ir al registro -->
+
+						
                         <div class="mt-3 text-center">
                             <p>¿No tienes cuenta? <a href="<?= site_url('auth/register') ?>">Regístrate aquí</a></p>
                         </div>
