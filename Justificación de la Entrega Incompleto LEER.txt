@@ -1,0 +1,6 @@
+Justificación de la Entrega Incompleta del Proyecto
+
+Estimado ING,
+
+Me dirijo a usted para presentar las razones que han llevado a la entrega incompleta de mi proyecto de repositorio de juegos retro. Durante el desarrollo del proyecto, me encontré con  desafíos técnicos que me impidieron completar la tarea de subir el código fuente a la plataforma GitHub .Detallo las dificultades encontradas:
+-Durante el proceso de configuración de Git en mi servidor, me encontré con problemas relacionados con la autenticación SSH y las claves de acceso. A pesar de seguir las guías y realizar múltiples intentos de configuración, no pude establecer una conexión estable y segura para realizar la subida de archivos a mi repositorio en GitHub.
