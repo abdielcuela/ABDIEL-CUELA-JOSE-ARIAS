@@ -1,0 +1,40 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class GameApi extends CI_Controller {
+
+    private $games = [];
+
+    public function __construct() {
+        parent::__construct();
+        $this->load->helper('url');
+        $this->load->helper('json');
+    }
+
+    public function getGames() {
+        $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($this->games));
+    }
+
+    public function addGame() {
+        $input = json_decode(file_get_contents('php://input'), true);
+
+        if (!isset($input['name']) || empty($input['name'])) {
+            $this->output
+                ->set_status_header(400)
+                ->set_output(json_encode(['error' => 'Nombre del juego vacío']));
+            return;
+        }
+
+        $this->games[] = [
+            'name' => $input['name'],
+            'description' => isset($input['description']) ? $input['description'] : '',
+            'release_date' => isset($input['release_date']) ? $input['release_date'] : ''
+        ];
+
+        $this->output
+            ->set_status_header(201)
+            ->set_output(json_encode(['success' => 'Juego añadido correctamente']));
+    }
+}
