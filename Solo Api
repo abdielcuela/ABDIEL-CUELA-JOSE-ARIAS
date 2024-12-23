@@ -1,0 +1,52 @@
+document.addEventListener('DOMContentLoaded', function () {
+    const gamesList = document.getElementById('games-list');
+    const gameNameInput = document.getElementById('game-name');
+    const gameDescInput = document.getElementById('game-description');
+    const releaseDateInput = document.getElementById('release-date');
+    const addButton = document.getElementById('add-game');
+
+    function getGames() {
+        fetch('http://localhost/tu_proyecto/index.php/api/games')
+            .then(response => response.json())
+            .then(data => {
+                gamesList.innerHTML = '';
+                data.forEach(game => {
+                    const gameElement = document.createElement('li');
+                    gameElement.textContent = ${game.name} - ${game.description} (Release Date: ${game.release_date});
+                    gamesList.appendChild(gameElement);
+                });
+            });
+    }
+
+    function addGame(name, description, release_date) {
+        fetch('http://localhost/tu_proyecto/index.php/api/games/add', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name, description, release_date })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                getGames();
+            } else {
+                console.error('Error:', data.error);
+            }
+        });
+    }
+
+    addButton.addEventListener('click', function () {
+        const name = gameNameInput.value.trim();
+        const description = gameDescInput.value.trim();
+        const release_date = releaseDateInput.value.trim();
+        if (name) {
+            addGame(name, description, release_date);
+            gameNameInput.value = '';
+            gameDescInput.value = '';
+            releaseDateInput.value = '';
+        }
+    });
+
+    getGames();
+});
