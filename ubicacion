@@ -1,0 +1,2 @@
+$route['api/games'] = 'api/gameapi/getGames';
+$route['api/games/add'] = 'api/gameapi/addGame';
